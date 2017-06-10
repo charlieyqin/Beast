@@ -2,7 +2,7 @@
 
 cmake_minimum_required (VERSION 3.5.2)
 
-project (Beast)
+project (Beast VERSION 1.0.0)
 
 set_property (GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -60,10 +60,7 @@ else()
         system
         thread
         )
-    link_libraries (${Boost_LIBRARIES})
 endif()
-
-include_directories (SYSTEM ${Boost_INCLUDE_DIRS})
 
 if (MINGW)
     link_libraries(ws2_32 mswsock)
@@ -128,6 +125,19 @@ elseif ("${VARIANT}" STREQUAL "release")
     set(CMAKE_BUILD_TYPE RELEASE)
 
 endif()
+
+#-------------------------------------------------------------------------------
+#
+# Library interface
+#
+
+add_library(${PROJECT_NAME} INTERFACE)
+target_link_libraries(${PROJECT_NAME} INTERFACE Boost::system)
+
+#-------------------------------------------------------------------------------
+#
+# Tests and examples
+#
 
 include_directories (.)
 include_directories (extras)
