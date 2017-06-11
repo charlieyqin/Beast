@@ -12,7 +12,6 @@
 [include concept/BodyWriter.qbk]
 [include concept/BufferSequence.qbk]
 [include concept/DynamicBuffer.qbk]
-[include concept/Field.qbk]
 [include concept/Fields.qbk]
 [include concept/FieldsReader.qbk]
 [include concept/Streams.qbk]
